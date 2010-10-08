@@ -25,8 +25,6 @@
 #include <linux/curcial_oj.h>
 #endif
 
-extern struct wake_lock main_wake_lock;
-
 struct gpio_kp {
 	struct gpio_event_input_devs *input_devs;
 	struct gpio_event_matrix_info *keypad_info;
@@ -116,8 +114,6 @@ static void report_key(struct gpio_kp *kp, int key_index, int out, int in)
 	unsigned short keyentry = mi->keymap[key_index];
 	unsigned short keycode = keyentry & MATRIX_KEY_MASK;
 	unsigned short dev = keyentry >> MATRIX_CODE_BITS;
-	static unsigned long    last_jiffies = 0;
-        static bool             sent = 0;
 #ifdef CONFIG_OPTICALJOYSTICK_CRUCIAL
 	static unsigned need_send_spec_key = 1;
 #endif
@@ -151,20 +147,6 @@ static void report_key(struct gpio_kp *kp, int key_index, int out, int in)
 			need_send_spec_key = !pressed;
 			printk(KERN_INFO "%s: send OJ action key, pressed: %d\n",
 				__func__, need_send_spec_key);
-                                if (!wake_lock_active(&main_wake_lock) && 
-                                    pressed && jiffies - last_jiffies < 75) {
-				        input_report_key(kp->input_devs->dev[dev], keycode, pressed);
-                                        last_jiffies = 0;
-                                        sent = 1;
-                                }
-                                else if (!wake_lock_active(&main_wake_lock) && pressed)
-                                    last_jiffies = jiffies;
-                                else if (wake_lock_active(&main_wake_lock) && sent) {
-				    input_report_key(kp->input_devs->dev[dev], keycode, pressed);
-			            curcial_oj_send_key(keycode, 1); /* simulate push-button */
-			            curcial_oj_send_key(keycode, 0); /* to auto-unlock screen */
-                                    sent = last_jiffies = 0;
-                                }
 		}
 	}
 #endif
