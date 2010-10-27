@@ -98,13 +98,13 @@ static unsigned int sample_rate_jiffies;
  * Freqeuncy delta when ramping up.
  * zero disables causes to always jump straight to max frequency.
  */
-#define DEFAULT_RAMP_UP_STEP 352000
+#define DEFAULT_RAMP_UP_STEP 384000
 static unsigned int ramp_up_step;
 
 /*
  * Max freqeuncy delta when ramping down. zero disables.
  */
-#define DEFAULT_MAX_RAMP_DOWN 352000
+#define DEFAULT_MAX_RAMP_DOWN 384000
 static unsigned int max_ramp_down;
 
 /*
