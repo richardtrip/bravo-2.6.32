@@ -12,6 +12,7 @@ obj-$(CONFIG_ARCH_MSM7X30) += clock-7x30.o arch-init-7x30.o socinfo.o
 obj-$(CONFIG_ARCH_MSM7X30) += rpc_pmapp.o smd_rpcrouter_clients.o spm.o
 obj-$(CONFIG_ARCH_MSM7X30) += rpc_hsusb.o
 obj-$(CONFIG_ARCH_MSM_SCORPION) += idle-v7.o
+obj-$(CONFIG_MSM_CPU_AVS) += avs.o avs_hw.o
 obj-y += clock.o
 obj-y += gpio.o generic_gpio.o
 obj-y += nand_partitions.o
