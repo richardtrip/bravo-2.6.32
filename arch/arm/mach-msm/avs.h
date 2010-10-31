@@ -31,7 +31,7 @@
 #define	USE_OVERCLOCKING	1
 /* #define	USE_EXTREMEOVERCLOCKING	1 */
 
-#define VOLTAGE_MIN  950 /* mV */
+#define VOLTAGE_MIN  875 /* mV */
 #define VOLTAGE_MAX  1300
 #define VOLTAGE_STEP 25
 
