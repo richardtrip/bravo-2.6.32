@@ -156,12 +156,12 @@ static int Full_0;
 #define CHARGE_SLOW	1
 #define CHARGE_FAST	2
 
-#define TEMP_CRITICAL	600 /* no charging at all */
-#define TEMP_HOT	500 /* no fast charge, no charge > 4.1v */
-#define TEMP_WARM	450 /* no fast charge above this */
+#define TEMP_CRITICAL	800 /* no charging at all */
+#define TEMP_HOT	700 /* no fast charge, no charge > 4.1v */
+#define TEMP_WARM	650 /* no fast charge above this */
 
-#define TEMP_HOT_MAX_MV	4100 /* stop charging here when hot */
-#define TEMP_HOT_MIN_MV	3800 /* resume charging here when hot */
+#define TEMP_HOT_MAX_MV	4500 /* stop charging here when hot */
+#define TEMP_HOT_MIN_MV	4200 /* resume charging here when hot */
 
 #define TEMP_CRITICAL_BC	    570 /* no charging at all */
 #define TEMP_CRITICAL_RECHG_BC  550 /* recharge at 1.temp <= 55C and 2. Vb < 3.8V */
